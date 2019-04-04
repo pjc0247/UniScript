@@ -1,6 +1,6 @@
 <p align="center">
-<h1>UniScript</h1><br>
-<b>Brings C# scripting into Unity which works like native code.</b>
+<b>UniScript</b><br>
+Brings C# scripting into Unity which just acts as native code.
 </p>
 
 
