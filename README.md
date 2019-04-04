@@ -1,6 +1,6 @@
 <p align="center">
 <b>UniScript</b><br>
-Brings C# scripting into Unity which just acts as native code.
+Brings C# scripting into Unity which acts as native code.
 </p>
 
 Overview
