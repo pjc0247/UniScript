@@ -27,6 +27,6 @@ Yet Another C# Scripting Engine
 Other C# scripts use `mcs` or `roslyn`. They're all compiler based not a interpreter<br>
 however `UniScript` uses a __SlowSharp__ as a backend<br>
 which enables....
-* __Sandboxing__
-* __Fully compatible with iOS, WebAssembly and WSA__
-* __Execution timeout to prevent infinite loops__
+* __Sandboxing__ : Can prevent malicious call with Whitelist, Blacklist or your own rules.
+* __Fully compatible with iOS, WebAssembly and WSA__ : iOS is a huge market you can't abandon.
+* __Execution timeout to prevent infinite loops__ : More safety on user created mods!
