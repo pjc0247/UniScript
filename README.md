@@ -5,7 +5,7 @@ Brings C# scripting into Unity which acts as native code.
 
 Overview
 ----
-cs
+```cs
 var src = @"
 class PlayerMovement : MonoBehaviour {
     public void MoveForward() {
@@ -20,6 +20,7 @@ dynamic move = script
     .Override("PlayerMovement", this)
     .AsDynamic();
 move.MoveForward();
+```
 
 Yet Another C# Scripting Engine
 ---
@@ -33,7 +34,7 @@ which enables....
 Supports Unity's native messages
 ----
 Unity messages will be fired automatically, same as Native C#.
-cs
+```cs
 class MoveForward : UniScriptBehaviour { 
     public void Update() {
         transform.position += new Vector3(0, 0, 1);
@@ -41,6 +42,7 @@ class MoveForward : UniScriptBehaviour {
     public void OnEnable() { }
     public void OnDisable() { }
 }
+```
 One only difference is all callbacks should be declared as public.
 
 True Live Reloading
