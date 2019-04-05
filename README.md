@@ -24,12 +24,12 @@ move.MoveForward();
 
 Yet Another C# Scripting Engine
 ---
-Other C# scripts use mcs or roslyn. They're all compiler based not a interpreter<br>
-however UniScript uses a SlowSharp as a backend<br>
+Other C# scripts use `mcs` or `roslyn`. They're all compiler based not a interpreter<br>
+however UniScript uses a __SlowSharp__ as a backend<br>
 which enables....
-* Sandboxing : Can prevent malicious call with Whitelist, Blacklist or your own rules.
-* Fully compatible with iOS, WebAssembly and WSA : iOS is a huge market you can't abandon.
-* Execution timeout to prevent infinite loops : More safety on user created mods!
+* __Sandboxing__ : Can prevent malicious call with Whitelist, Blacklist or your own rules.
+* __Fully compatible with iOS, WebAssembly and WSA__ : iOS is a huge market you can't abandon.
+* __Execution timeout to prevent infinite loops__ : More safety on user created mods!
 
 Supports Unity's native messages
 ----
