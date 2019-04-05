@@ -1,5 +1,5 @@
 <p align="center">
-<b>UniScript</b><br>
+<img src="uniscript.png" /><br>
 Brings C# scripting into Unity which acts as native code.
 </p>
 
