@@ -52,7 +52,7 @@ SCREENSHOTS HERE
 
 LICENSE
 ----
-It doesn't have clear license for this moment, becuase this is very early stage of development and I'm not yet determined to sell this product or not.<br>
+It doesn't have clear license at this moment, becuase this is very early stage of development and I'm not yet determined to sell this product or not.<br>
 So just keep below lines.
 
 * Non-Commercial/Commercial use is allowed.
