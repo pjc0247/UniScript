@@ -45,7 +45,7 @@ class MoveForward : UniScriptBehaviour {
 ```
 One only difference is all callbacks should be declared as public.
 
-True Live Reloading
+True Hot Reloading
 ----
 SCREENSHOTS HERE
 
