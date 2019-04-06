@@ -50,6 +50,10 @@ True Live Reloading
 SCREENSHOTS HERE
 
 
+Runtime Debugging
+----
+<src src="debug.png" />
+
 LICENSE
 ----
 It doesn't have clear license at this moment, becuase this is very early stage of development and I'm not yet determined to sell this product or not.<br>
