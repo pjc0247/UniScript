@@ -52,7 +52,7 @@ SCREENSHOTS HERE
 
 Runtime Debugging
 ----
-<src src="debug.png" />
+<img src="debug.png" />
 
 LICENSE
 ----
