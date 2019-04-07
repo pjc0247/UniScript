@@ -47,7 +47,23 @@ One only difference is all callbacks should be declared as public.
 
 True Hot Reloading
 ----
-SCREENSHOTS HERE
+Can replace methods after parsing. This also affects already instantiated objects. 
+```cs
+var r = CScript.CreateRunner(@"
+class Foo { public int GiveMeNumber() => 10; }
+");
+
+var foo = r.Instantiate("Foo");
+// should be 10
+foo.Invoke("GiveMeNumber");
+```
+```cs
+ss.UpdateMethodsOnly(@"
+class Foo { public int GiveMeNumber() => 20; }
+");
+// should be 20
+foo.Invoke("GiveMeNumber");
+```
 
 
 Runtime Debugging
