@@ -9,14 +9,11 @@ public class UniScriptBehaviour : MonoBehaviour
     public bool isBound => runner != null;
     public string src { get; private set; }
 
-    protected Runner runner;
+    protected CScript runner;
     protected HybInstance instance;
 
     private ScriptFlags flags;
 
-    protected virtual void Awake()
-    {
-    }
     void Update()
     {
         if (flags.hasUpdate)
@@ -58,6 +55,7 @@ public class UniScriptBehaviour : MonoBehaviour
         this.src = src;
 
         runner = CScript.CreateRunner(src);
+        UniScript.runner = runner;
         instance = runner.Override(
             GetBindableClass(), this);
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ACE in Action</title>
+    <style type="text/css" media="screen">
+
+        #editor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .myMarker {
+            position: absolute;
+            background: rgba(100,200,100,0.5);
+            z-index: 20
+        }
+    </style>
+</head>
+<body>
+    <div id="editor">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js" type="text/javascript" charset="utf-8"></script>
+    
+</body>
+</html>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/csharp");
+    editor.setReadOnly(true);
+
+    function setSrc(src) {
+        editor.setValue(atob(src));
+        editor.getSession().selection.clearSelection();
+    }
+    function markLine(ln) {
+        var Range = ace.require('ace/range').Range;
+        editor.session.addMarker(new Range(ln, 0, ln, 1), "myMarker", "fullLine");
+    }
+</script>
