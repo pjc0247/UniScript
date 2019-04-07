@@ -78,4 +78,4 @@ So just keep below lines.
 * Non-Commercial/Commercial use is allowed.
 * Sourcecode redistribution is not allowed.
 
-However, SlowSharp has its own license and you may publish with some modifications.
+However, __SlowSharp__ has its own license and you may publish code with some modifications.
