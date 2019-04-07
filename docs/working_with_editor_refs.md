@@ -1,7 +1,10 @@
 Working with Editor referencing
 ====
 
-__Unity__ provides many useful editor features to make an linkage between C# and Editor objects.
+__Unity__ provides many useful editor features to make an linkage between C# and Editor objects.<br>
+However, scripts cannot use these features because they are not a compiled assembly and cannot be reflected.<br>
+<br>
+In this section, introduces the simple way to solve these problems.
 
 Public field
 ----
