@@ -13,7 +13,7 @@ UniScript.DumpLocals();
 
 ### UniScript.Break()
 
-Shows debug window. Works only Editor.
+Shows debug window. Works only Editor env.
 ```cs
 UniScript.Break();
 ```
