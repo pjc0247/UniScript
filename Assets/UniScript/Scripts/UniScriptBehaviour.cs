@@ -50,6 +50,13 @@ public class UniScriptBehaviour : MonoBehaviour
             instance.Invoke(nameof(OnMouseUp));
     }
 
+    /*
+    public GameObject LoadPrefab(string path)
+    {
+        return Resources.Load<GameObject>(path);
+    }
+    */
+
     public void Bind(string src)
     {
         this.src = src;
