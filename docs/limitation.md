@@ -60,3 +60,21 @@ partial class Foo {
   public void B() { }
 }
 ```
+
+Operator overloading
+----
+Currently, main purpose of __UniScript__ is writing a game flow using external texts not writing a datastructure.<br>
+However, I'm totally agree with this is necessary.<br>
+<br>
+Will be implemented in near future.
+
+
+Lambda
+----
+Will be implemented in high priority.
+
+
+And more...
+----
+* Latest language features such as `pattern matching` and `named tuple`.
+* Special keywords: `unsafe`, `stackalloc`, `volatile` and so on.
