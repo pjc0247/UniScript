@@ -32,3 +32,31 @@ goto label;
 ```
 
 Strongly not recommended to use.
+
+
+generic
+----
+__generics__ are one of hardest part to implement. <br>
+
+Instantiating generic classes from script is fine, declaring generic classes or method is not supported yet.
+```cs
+// This is OK
+var list = new List<int>();
+
+// Oops, Not implemented yet
+class Foo<T> { }
+```
+
+
+partial
+----
+__SlowSharp__ is an interpreter and does not have `linking` phase during compliation. `partial` keyword won't be supported by design.
+
+```cs
+partial class Foo {
+  public void A() { }
+}
+partial class Foo {
+  public void B() { }
+}
+```
