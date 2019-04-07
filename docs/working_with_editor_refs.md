@@ -1,6 +1,8 @@
 Working with Editor referencing
 ====
 
+__Unity__ provides many useful editor features to make an linkage between C# and Editor objects.
+
 Public field
 ----
 ```cs
