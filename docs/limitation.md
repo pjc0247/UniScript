@@ -1,9 +1,11 @@
 Limitation
 ====
 
+Since __UniScript__ uses [SlowSharp](https://github.com/pjc0247/SlowSharp) as a backend, there're some differences compared to original __C#__.
+
 await
 ----
-Since __UniScript__ is designed for creating game flows not a core logic computation, Threading is not a major consideration.<br>
+__UniScript__ is designed for creating game flows not a core logic computation, Threading is not a major consideration.<br>
 Current implementation of `await` keyword just __Waits__ until task ends and may blocks the execution thread.<br>
 <br>
 Here's a code from __SlowSharp__.
@@ -71,7 +73,7 @@ Will be implemented in near future.
 
 Lambda
 ----
-Will be implemented in high priority.
+Will be implemented with high priority.
 
 
 And more...
