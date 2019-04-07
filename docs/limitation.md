@@ -65,7 +65,7 @@ partial class Foo {
 
 Operator overloading
 ----
-Currently, main purpose of __UniScript__ is writing a game flow using external texts not writing a datastructure.<br>
+Currently, main purpose of __UniScript__ is writing a game flow using external texts not creating a datastructure.<br>
 However, I'm totally agree with this is necessary.<br>
 <br>
 Will be implemented in near future.
