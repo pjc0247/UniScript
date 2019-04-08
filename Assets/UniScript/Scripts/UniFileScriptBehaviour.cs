@@ -10,6 +10,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     public static Action<string, UniFileScriptBehaviour> unregisterScriptDelegate;
 
     public UnityEngine.Object script;
+    [HideInInspector]
     public string scriptPath;
 
     public void Awake()
