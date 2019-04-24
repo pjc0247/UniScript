@@ -1,6 +1,7 @@
 <p align="center">
 <img src="uniscript.png" /><br>
-Brings C# scripting into Unity which acts as native code.
+Brings C# scripting into Unity which acts as native code.<br>
+![Documentation](docs/)
 </p>
 
 Overview
