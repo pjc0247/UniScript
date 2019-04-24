@@ -1,7 +1,7 @@
 <p align="center">
 <img src="uniscript.png" /><br>
 Brings C# scripting into Unity which acts as native code.<br>
-![Documentation](docs/)
+    <a hrec="docs/">Documentation</a>
 </p>
 
 Overview
