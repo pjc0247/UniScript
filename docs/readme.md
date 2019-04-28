@@ -1,7 +1,7 @@
 UniScript
 ====
 
-* This documentation does not inform you about script syntax since it's totally C#.
+* This documentation does not inform you about script syntax becuase it's totally C#.
 
 Subjects
 ----
