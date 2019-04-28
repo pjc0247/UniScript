@@ -11,13 +11,13 @@ public class EnableWebGLKeyInput : MonoBehaviour
     void Start()
     {
 #if UNITY_WEBGL
-        WebGLInput.captureAllKeyboardInput = false;
+        WebGLInput.captureAllKeyboardInput = true;
 #endif
     }
 
-    private void OnApplicationFocus(bool focus)
+    public void SetFocus(string focus)
     {
-        if (focus)
+        if (focus == "true")
             WebGLInput.captureAllKeyboardInput = true;
         else
             WebGLInput.captureAllKeyboardInput = false;
