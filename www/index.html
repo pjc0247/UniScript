@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UniScript - Playground</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/bin.json");
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <style>
+      body { margin: 0 0 0 0; padding: 0 0 0 0; }
+
+      .btn {
+        border-radius: 10px;
+        background-color: coral;
+        color: white;
+        font-weight: bold;
+        padding: 10px 10px;
+      }
+      #expand {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+      #apply {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: limegreen;
+      }
+      #shrink {
+        position: fixed;
+        top: 15px;
+        right: 100px;
+      }
+      #container {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        width: 800px;
+        height: 400px;
+      }
+      #editor {
+        width: 100%;
+        height: 100%;
+      }
+
+      #header {
+        font-family: 'Bree Serif', serif;
+        font-size: 25px;
+
+        margin-left: 15px;
+        margin-top:   5px;
+      }
+      #header b {
+        font-size: 40px;
+      }
+      #gameContainer {
+        left: calc(50% - 400px);
+        top: calc(50% - 200px);
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <b>UniScript</b> - Brings C# scripting, Runs everywhere
+    </div>
+
+    <div id="gameContainer" style="width: 800px; height: 500px; margin: auto"></div>
+    <div class="btn" id="expand" onclick="expand()">EDIT</div>
+
+    <div id="container" style="transform: scale(0);transform-origin: 100% 0%;">
+      <div id="editor">using System;
+using UnityEngine;
+
+class SimpleMoveBehaviour : UniFileScriptBehaviour {
+
+    public CharacterController cc;
+
+    public void OnBind() {
+        cc = GetComponent&lt;CharacterController&gt;();
+
+        Debug.Log(cc);
+    }
+
+    public void Update() {
+        if (this.cc.isGrounded == false) {
+            this.cc.SimpleMove(new Vector3(0, 0, 0));
+            return;
+        }
+        
+        if (Input.GetKey(KeyCode.LeftArrow))
+            this.cc.SimpleMove(new Vector3(-1, 0, 0) * Time.deltaTime * 60);
+        if (Input.GetKey(KeyCode.RightArrow))
+            this.cc.SimpleMove(new Vector3(1, 0, 0) * Time.deltaTime * 60);
+        if (Input.GetKey(KeyCode.UpArrow))
+            this.cc.SimpleMove(new Vector3(0, 0, 1) * Time.deltaTime * 60);
+        if (Input.GetKey(KeyCode.DownArrow))
+            this.cc.SimpleMove(new Vector3(0, 0, -1) * Time.deltaTime * 60);
+    }
+}</div>
+      <div class="btn" id="shrink" onclick="shrink()">CLOSE</div>
+      <div class="btn" id="apply" onclick="apply()">APPLY</div>
+    </div>  
+  </body>
+</html>
+
+<script>
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/vibrant_ink");
+editor.session.setMode("ace/mode/csharp");
+editor.setReadOnly(false);
+
+function expand() {
+  anime({
+    targets: '#container',
+    scale: 1,
+    easing: 'easeOutElastic',
+    duration: 800
+  });
+
+  gameInstance.SendMessage("WebGLKeyInput", "SetFocus", "false");
+}
+function shrink() {
+  anime({
+    targets: '#container',
+    scale: 0,
+    easing: 'easeInOutElastic',
+    duration: 800
+  });
+
+  gameInstance.SendMessage("WebGLKeyInput", "SetFocus", "true");
+}
+function apply() {
+  gameInstance.SendMessage("Player", "Bind", editor.getValue());
+  alert("Applied!");
+}
+</script>
