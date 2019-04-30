@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using Slowsharp;
 
 public class UniScriptBehaviour : MonoBehaviour
@@ -50,6 +51,26 @@ public class UniScriptBehaviour : MonoBehaviour
             instance.Invoke(nameof(OnMouseUp));
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (flags.hasOnTriggerEnter)
+            instance.Invoke(nameof(OnTriggerEnter), other);
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (flags.hasOnTriggerExit)
+            instance.Invoke(nameof(OnTriggerExit), other);
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (flags.hasOnCollisionEnter)
+            instance.Invoke(nameof(OnCollisionEnter), other);
+    }
+    void OnCollisionExit(Collision other)
+    {
+        if (flags.hasOnCollisionExit)
+            instance.Invoke(nameof(OnCollisionExit), other);
+    }
     /*
     public GameObject LoadPrefab(string path)
     {
@@ -61,7 +82,13 @@ public class UniScriptBehaviour : MonoBehaviour
     {
         this.src = src;
 
-        runner = CScript.CreateRunner(src);
+        var scriptConfig = ScriptConfig.Default;
+        scriptConfig.PrewarmTypes = new Type[] {
+            typeof(Collider), typeof(UnityEngine.Transform), typeof(UnityEngine.Vector3),
+            typeof(Vector2), typeof(Vector4), typeof(UnityEngine.GameObject)
+        };
+
+        runner = CScript.CreateRunner(src, scriptConfig);
         UniScript.runner = runner;
         instance = runner.Override(
             GetBindableClass(), this);
@@ -95,6 +122,10 @@ public class UniScriptBehaviour : MonoBehaviour
         flags.hasOnMouseDown = HasMethod(nameof(OnMouseDown));
         flags.hasOnMouseUp = HasMethod(nameof(OnMouseUp));
         flags.hasOnDestroy = HasMethod(nameof(OnDestroy));
+        flags.hasOnTriggerEnter = HasMethod(nameof(OnTriggerEnter));
+        flags.hasOnTriggerExit = HasMethod(nameof(OnTriggerExit));
+        flags.hasOnCollisionEnter = HasMethod(nameof(OnCollisionEnter));
+        flags.hasOnCollisionExit = HasMethod(nameof(OnCollisionExit));
     }
 
     private bool HasMethod(string id)

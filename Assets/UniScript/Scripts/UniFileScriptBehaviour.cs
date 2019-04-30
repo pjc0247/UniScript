@@ -13,7 +13,6 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     private static bool isScriptBundleLoaded = false;
     private static Dictionary<string, string> scripts = new Dictionary<string, string>();
 
-
     public UnityEngine.Object script;
     [HideInInspector]
     public string scriptPath;
