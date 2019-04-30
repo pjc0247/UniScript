@@ -12,4 +12,9 @@ public struct ScriptFlags
     public bool hasOnDestroy;
     public bool hasOnMouseDown;
     public bool hasOnMouseUp;
+
+    public bool hasOnTriggerEnter;
+    public bool hasOnTriggerExit;
+    public bool hasOnCollisionEnter;
+    public bool hasOnCollisionExit;
 }

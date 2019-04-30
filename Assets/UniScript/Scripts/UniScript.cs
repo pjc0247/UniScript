@@ -14,6 +14,17 @@ public sealed class UniScript
     public static CScript runner;
     public static DumpSnapshot dump;
 
+    public static void Attach(GameObject obj, string script)
+    {
+        if (obj == null)
+            throw new ArgumentNullException(nameof(obj));
+        if (string.IsNullOrEmpty(script))
+            throw new ArgumentException(nameof(script));
+
+        var uniScript = obj.AddComponent<UniScriptBehaviour>();
+        uniScript.Bind(script);
+    }
+
     public static void Break()
     {
         dump = runner.GetDebuggerDump();
