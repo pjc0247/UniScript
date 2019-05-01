@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | UnityPlayground</title>
+    <title>UnityPlayground</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
@@ -11,15 +11,66 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/bin.json", {onProgress: UnityProgress});
     </script>
+    <style>
+      body {
+        background: url(background.jpg);
+        background-size: cover;
+      }
+      #info {
+        position: fixed;
+        left: 5px;
+        bottom: 5px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 2px 2px black;
+      }
+      #left {
+        position: fixed;
+        left: 150px;
+        top: calc(50% - 60px);
+      }
+      #right {
+        position: fixed;
+        right: 150px;
+        top: calc(50% - 60px);
+      }
+      .github img {
+        width: 120px;
+        height: 120px;
+      }
+      .github span {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px black;
+      }
+    </style>
   </head>
   <body>
     <div class="webgl-content">
-      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div id="gameContainer" style="width: 1080px; height: 720px;"></div>
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
         <div class="title">UnityPlayground</div>
       </div>
+
+      
     </div>
+
+    <a id="left" class="github" href="https://github.com/pjc0247/UniScript" target="_blank">
+      <img src="./github.svg" />
+      <br>
+      <span>&nbsp;UniScript</span>
+    </a>
+    <a id="right" class="github" href="https://github.com/pjc0247/SlowSharp" target="_blank">
+      <img src="./github.svg" />
+      <br>
+      <span>SlowSharp</span>
+    </a>
+
+    <div id="info">
+        <span>UniScript - Powered by SlowSharp</span>
+      </div>
   </body>
 </html>
