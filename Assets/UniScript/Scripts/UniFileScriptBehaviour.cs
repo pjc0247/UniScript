@@ -18,6 +18,15 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     public string scriptPath;
 
     #region INTERNAL_USE_ONLY
+    public static void LoadScriptBundle(TextAsset asset)
+    {
+        Debug.Log(asset.text);
+
+        scripts = ((Dictionary<string, object>)UniScriptInternal.MiniJSON.Json.Deserialize(asset.text))
+            .ToDictionary(x => x.Key, x => (string)x.Value);
+
+        Debug.Log($"[UniFileScript] Loaded {scripts.Count} scripts");
+    }
     private static void LoadScriptBundle()
     {
         if (isScriptBundleLoaded) return;
@@ -29,8 +38,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
             return;
         }
 
-        scripts = ((Dictionary<string, object>)UniScriptInternal.MiniJSON.Json.Deserialize(monolith.text))
-            .ToDictionary(x => x.Key, x => (string)x.Value);
+        LoadScriptBundle(monolith);
     }
     public static void UpdateScript(string path, string src)
     {
@@ -52,8 +60,10 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
         var src = "";
 
 #if UNITY_EDITOR
-        src = File.ReadAllText(scriptPath);
-
+        if (scripts.ContainsKey(scriptPath))
+            src = scripts[scriptPath];
+        else
+            src = File.ReadAllText(scriptPath);
 #else
         if (isScriptBundleLoaded == false)
             LoadScriptBundle();
