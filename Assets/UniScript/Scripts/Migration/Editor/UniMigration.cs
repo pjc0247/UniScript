@@ -16,6 +16,8 @@ public class UniMigration : EditorWindow
         public string scriptPath;
     }
 
+    private static string scenePath;
+
     [MenuItem("UniScript/Migrate scene")]
     public static void MigrateScene()
     {
@@ -44,10 +46,12 @@ public class UniMigration : EditorWindow
         Directory.CreateDirectory(tempPath);
         Scriptify(paths, tempPath);
 
+        scenePath = scene.path;
+
         var backupPath = scene.path + ".backup.unity";
         if (File.Exists(backupPath))
             File.Delete(backupPath);
-        File.Copy(scene.path, backupPath    );
+        File.Copy(scene.path, backupPath);
 
         foreach (var path in paths)
         {
@@ -68,6 +72,18 @@ public class UniMigration : EditorWindow
 
             DestroyImmediate(path.mono);
         }
+    }
+    public static void EndMigration()
+    {
+        var backupPath = scenePath + ".backup.unity";
+        if (File.Exists(scenePath))
+            File.Delete(scenePath);
+        File.Copy(backupPath, scenePath);
+
+        AssetDatabase.ImportAsset(scenePath, ImportAssetOptions.ForceUpdate);
+
+        EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
+        //EditorSceneManager.load
     }
 
     private static void Scriptify(List<ScriptData> srcPath, string dstPath)
