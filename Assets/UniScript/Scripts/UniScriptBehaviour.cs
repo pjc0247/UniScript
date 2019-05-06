@@ -112,7 +112,7 @@ public class UniScriptBehaviour : MonoBehaviour
         throw new ArgumentException(
             $"Script does not contains class that overrides {GetType()}.");
     }
-    private void BuildFlags()
+    protected virtual void BuildFlags()
     {
         flags.hasOnBind = HasMethod("OnBind");
         flags.hasUpdate = HasMethod(nameof(Update));
@@ -128,6 +128,6 @@ public class UniScriptBehaviour : MonoBehaviour
         flags.hasOnCollisionExit = HasMethod(nameof(OnCollisionExit));
     }
 
-    private bool HasMethod(string id)
+    protected bool HasMethod(string id)
         => instance.GetMethods(id).Length > 0;
 }
