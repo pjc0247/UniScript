@@ -5,10 +5,15 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using Slowsharp;
 
+using UniScript.Serialization;
+
 public class UniScriptBehaviour : MonoBehaviour
 {
     public bool isBound => runner != null;
     public string src { get; private set; }
+
+    [HideInInspector]
+    public SerializableDictionarySO overrideFields;
 
     protected CScript runner;
     protected HybInstance instance;
@@ -89,11 +94,18 @@ public class UniScriptBehaviour : MonoBehaviour
         };
 
         runner = CScript.CreateRunner(src, scriptConfig);
-        UniScript.runner = runner;
+        RuntimeScript.runner = runner;
         instance = runner.Override(
             GetBindableClass(), this);
 
         BuildFlags();
+
+        if (overrideFields != null)
+        {
+            foreach (var f in overrideFields)
+                instance.SetPropertyOrField(f.Key, HybInstance.Object(f.Value));
+            overrideFields = null;
+        }
 
         if (flags.hasOnBind)
             instance.Invoke("OnBind");
