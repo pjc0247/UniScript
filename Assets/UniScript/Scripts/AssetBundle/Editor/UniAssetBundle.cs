@@ -8,8 +8,8 @@ public partial class UniAssetBundle
 {
     public static void BuildUniScriptScene(string sceneBundleName, string assetBundleName)
     {
-        if (Directory.Exists("Packs"))
-            Directory.Delete("Packs", true);
+        //if (Directory.Exists("Packs"))
+        //    Directory.Delete("Packs", true);
 
         Directory.CreateDirectory("Packs");
 
