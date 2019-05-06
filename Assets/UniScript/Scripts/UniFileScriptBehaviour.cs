@@ -14,7 +14,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     private static Dictionary<string, string> scripts = new Dictionary<string, string>();
 
     public UnityEngine.Object script;
-    [HideInInspector]
+    //[HideInInspector]
     public string scriptPath;
 
     #region INTERNAL_USE_ONLY
@@ -46,7 +46,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     }
     #endregion
 
-    public void Awake()
+    public virtual void Awake()
     {
         if (string.IsNullOrEmpty(scriptPath))
             return;
