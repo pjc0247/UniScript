@@ -39,9 +39,7 @@ namespace ModPlayerSDK
             EditorGUILayout.BeginVertical();
 
             if (GUILayout.Button("Add"))
-            {
-                CreateApp("A");
-            }
+                CreateAppWindow.ShowWindow();
 
             appsScroll = EditorGUILayout.BeginScrollView(appsScroll);
             if (apps != null)

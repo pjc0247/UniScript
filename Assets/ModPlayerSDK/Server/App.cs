@@ -13,7 +13,7 @@ namespace ModPlayerSDK
 
     public class App
     {
-        public async static Task CreateApp(string name)
+        public async static Task<CreateAppResponse> CreateApp(string name)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException(nameof(name));
@@ -24,9 +24,24 @@ namespace ModPlayerSDK
                     ["name"] = name
                 });
 
-            var json = JsonConvert.SerializeObject(resp.Data);
+            return Reinterpret<CreateAppResponse>(resp.Data);
         }
-        
+        public async static Task SetThumbnail(ModApp app, string url)
+        {
+            if (app == null)
+                throw new ArgumentException(nameof(app));
+            if (string.IsNullOrEmpty(url))
+                throw new ArgumentException(nameof(url));
+
+            var func = ModPlayerFB.Functions;
+            var resp = await func.GetHttpsCallable("setThumbnail")
+                .CallAsync(new Dictionary<string, object>()
+                {
+                    ["app_id"] = app.id,
+                    ["thumbnail_url"] = url
+                });
+        }
+
         public async static Task<GetAppsResponse> GetApps(string owner)
         {
             var func = ModPlayerFB.Functions;
@@ -93,6 +108,10 @@ namespace ModPlayerSDK
 
     namespace Model
     {
+        public class CreateAppResponse
+        {
+            public ModApp app;
+        }
         public class GetAppsResponse
         {
             public ModApp[] apps;

@@ -89,8 +89,8 @@ public class UniScriptBehaviour : MonoBehaviour
 
         var scriptConfig = ScriptConfig.Default;
         scriptConfig.PrewarmTypes = new Type[] {
-            typeof(Collider), typeof(UnityEngine.Transform), typeof(UnityEngine.Vector3),
-            typeof(Vector2), typeof(Vector4), typeof(UnityEngine.GameObject)
+            typeof(Collider), typeof(Transform), typeof(Vector3),
+            typeof(Vector2), typeof(Vector4), typeof(GameObject)
         };
 
         runner = CScript.CreateRunner(src, scriptConfig);
