@@ -1,5 +1,6 @@
 !*.dll
-
+bin/
+Packs/
 # This .gitignore file should be placed at the root of your Unity project directory
 
 /[Ll]ibrary/

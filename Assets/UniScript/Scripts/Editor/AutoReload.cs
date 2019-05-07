@@ -44,7 +44,9 @@ public class AutoReload : AssetPostprocessor
             if (scripts.ContainsKey(asset))
             {
                 foreach (var obj in scripts[asset])
+                {
                     obj.ReloadScript();
+                }
 
                 AutoLoadIndicator.applied = true;
             }

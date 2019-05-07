@@ -174,7 +174,7 @@ public class WebViewHook : ScriptableObject
         Invoke(_SetApplicationFocus, focus);
     }
 
-    protected void ShowDevTools()
+    public void ShowDevTools()
     {
         // This method may not work
         Invoke(_ShowDevTools);

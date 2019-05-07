@@ -16,7 +16,7 @@ public class UniScriptMenu
 using System.Collections;
 using UnityEngine;
 
-class NewScript : UniScriptFileBehaviour
+class NewScript : UniFileScriptBehaviour
 {
     public void OnBind()
     {

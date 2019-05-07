@@ -14,10 +14,19 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     private static Dictionary<string, string> scripts = new Dictionary<string, string>();
 
     public UnityEngine.Object script;
-    [HideInInspector]
+    //[HideInInspector]
     public string scriptPath;
 
     #region INTERNAL_USE_ONLY
+    public static void LoadScriptBundle(TextAsset asset)
+    {
+        Debug.Log(asset.text);
+
+        scripts = ((Dictionary<string, object>)UniScriptInternal.MiniJSON.Json.Deserialize(asset.text))
+            .ToDictionary(x => x.Key, x => (string)x.Value);
+
+        Debug.Log($"[UniFileScript] Loaded {scripts.Count} scripts");
+    }
     private static void LoadScriptBundle()
     {
         if (isScriptBundleLoaded) return;
@@ -28,9 +37,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
             Debug.LogWarning("No monolith.txt found");
             return;
         }
-
-        scripts = ((Dictionary<string, object>)UniScriptInternal.MiniJSON.Json.Deserialize(monolith.text))
-            .ToDictionary(x => x.Key, x => (string)x.Value);
+        LoadScriptBundle(monolith);
     }
     public static void UpdateScript(string path, string src)
     {
@@ -38,7 +45,7 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
     }
     #endregion
 
-    public void Awake()
+    public virtual void Awake()
     {
         if (string.IsNullOrEmpty(scriptPath))
             return;
@@ -52,8 +59,10 @@ public class UniFileScriptBehaviour : UniScriptBehaviour
         var src = "";
 
 #if UNITY_EDITOR
-        src = File.ReadAllText(scriptPath);
-
+        if (scripts.ContainsKey(scriptPath))
+            src = scripts[scriptPath];
+        else
+            src = File.ReadAllText(scriptPath);
 #else
         if (isScriptBundleLoaded == false)
             LoadScriptBundle();

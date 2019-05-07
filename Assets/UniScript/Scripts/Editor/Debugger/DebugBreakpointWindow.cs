@@ -9,7 +9,7 @@ public class DebugBreakpointWindow : EditorWindow
     [InitializeOnLoadMethod]
     static void Init()
     {
-        UniScript.showDebugger = (src, line) => {
+        RuntimeScript.showDebugger = (src, line) => {
             ShowWindow(src, line);
         };
     }
@@ -83,7 +83,7 @@ public class DebugBreakpointWindow : EditorWindow
         eval = EditorGUILayout.TextField("REPL", eval);
         if (e.keyCode == KeyCode.Return)
         {
-            evalResult = UniScript.Eval(eval);
+            evalResult = RuntimeScript.Eval(eval);
         }
         EditorGUILayout.LabelField(evalResult);
 
@@ -93,7 +93,7 @@ public class DebugBreakpointWindow : EditorWindow
         EditorGUILayout.BeginVertical();
         EditorGUILayout.LabelField("Locals", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        foreach (var local in UniScript.dump.locals)
+        foreach (var local in RuntimeScript.dump.locals)
         {
             EditorGUILayout.TextField(local.Key, local.Value.ToString());
         }
@@ -105,7 +105,7 @@ public class DebugBreakpointWindow : EditorWindow
         EditorGUILayout.BeginVertical();
         callstackScroll = EditorGUILayout.BeginScrollView(callstackScroll, true, false);
         EditorGUILayout.LabelField("Callstack", EditorStyles.boldLabel);
-        foreach (var callFrame in UniScript.dump.callStack.Reverse())
+        foreach (var callFrame in RuntimeScript.dump.callStack.Reverse())
         {
             EditorGUI.indentLevel++;
             EditorGUILayout.LabelField(callFrame.signature);
