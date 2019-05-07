@@ -8,51 +8,80 @@ using Newtonsoft.Json;
 
 namespace ModPlayerSDK
 {
+    using Internal;
     using Model;
 
     public class App
     {
-        public async static Task CreateApp(string title, string description)
+        public async static Task CreateApp(string name)
         {
-            if (string.IsNullOrEmpty(title))
-                throw new ArgumentException(nameof(title));
-            if (string.IsNullOrEmpty(description))
-                throw new ArgumentException(nameof(description));
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentException(nameof(name));
 
             var func = ModPlayerFB.Functions;
             var resp = await func.GetHttpsCallable("createApp")
                 .CallAsync(new Dictionary<string, object>() {
-                    ["title"] = title,
-                    ["description"] = description
+                    ["name"] = name
                 });
 
             var json = JsonConvert.SerializeObject(resp.Data);
         }
-        public async static Task<GetAppsResponse> GetMyApps()
+        
+        public async static Task<GetAppsResponse> GetApps(string owner)
         {
             var func = ModPlayerFB.Functions;
             var resp = await func.GetHttpsCallable("getApps")
-                .CallAsync(new Dictionary<string, object>() {
+                .CallAsync(new Dictionary<string, object>()
+                {
+                    ["owner"] = owner
                 });
 
             return Reinterpret<GetAppsResponse>(resp.Data);
         }
-        public async static Task SetBuild(ModApp app, string sceneUrl, string scriptUrl)
+        public static Task<GetAppsResponse> GetMyApps()
+        {
+            return GetApps(ModPlayerFB.Auth.CurrentUser.UserId);
+        }
+        public async static Task AddBuild(ModApp app, ModBuild build)
         {
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
-            if (string.IsNullOrEmpty(sceneUrl))
-                throw new ArgumentException(nameof(sceneUrl));
-            if (string.IsNullOrEmpty(scriptUrl))
-                throw new ArgumentException(nameof(scriptUrl));
+            if (build == null)
+                throw new ArgumentNullException(nameof(build));
 
             var func = ModPlayerFB.Functions;
-            var resp = await func.GetHttpsCallable("setBuild")
+            var resp = await func.GetHttpsCallable("addBuild")
                 .CallAsync(new Dictionary<string, object>() {
                     ["app_id"] = app.id,
-                    ["scene_url"] = sceneUrl,
-                    ["script_url"] = scriptUrl
+                    ["scene_url"] = build.scene_url,
+                    ["script_url"] = build.script_url,
+                    ["title"] = build.title,
+                    ["version"] = build.version,
+                    ["description"] = build.description
                 });
+        }
+
+        public async static Task<GetAppsResponse> CreatePlayHistory(ModApp app)
+        {
+            var func = ModPlayerFB.Functions;
+            var resp = await func.GetHttpsCallable("createPlayHistory")
+                .CallAsync(new Dictionary<string, object>()
+                {
+                    ["app_id"] = app.id
+                });
+
+            return Reinterpret<GetAppsResponse>(resp.Data);
+        }
+        public async static Task<GetAppsResponse> Like(ModApp app)
+        {
+            var func = ModPlayerFB.Functions;
+            var resp = await func.GetHttpsCallable("like")
+                .CallAsync(new Dictionary<string, object>()
+                {
+                    ["app_id"] = app.id
+                });
+
+            return Reinterpret<GetAppsResponse>(resp.Data);
         }
 
         private static T Reinterpret<T>(object input)

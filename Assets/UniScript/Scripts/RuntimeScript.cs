@@ -7,7 +7,7 @@ using UnityEngine;
 
 using Slowsharp;
 
-public sealed class UniScript
+public sealed class RuntimeScript
 {
     public static Action<string, int> showDebugger;
 

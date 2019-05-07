@@ -9,6 +9,9 @@ using UnityEditor.SceneManagement;
 
 namespace ModPlayerSDK
 {
+    using Internal;
+    using Model;
+
     public class ModPlayerBuildMenu : EditorWindow
     {
         [MenuItem("ModPlayer/Publish")]
@@ -36,7 +39,7 @@ namespace ModPlayerSDK
         async void Awake()
         {
             apps = (await App.GetMyApps()).apps;
-            appTitles = apps.Select(x => x.title).ToArray();
+            appTitles = apps.Select(x => x.name).ToArray();
         }
 
         public void OnGUI()
@@ -118,9 +121,14 @@ namespace ModPlayerSDK
                 await script.PutFileAsync($"Packs/{modName}_script");
                 EditorUtility.DisplayProgressBar("ModPlayerSDK", "Uploading...", 66);
 
-                await App.SetBuild(targetApp,
-                    (await scene.GetDownloadUrlAsync()).ToString(),
-                    (await script.GetDownloadUrlAsync()).ToString());
+                var sceneUrl = (await scene.GetDownloadUrlAsync()).ToString();
+                var scriptUrl = (await script.GetDownloadUrlAsync()).ToString();
+                await App.AddBuild(targetApp,
+                    new ModBuild()
+                    {
+                        scene_url = sceneUrl,
+                        script_url = scriptUrl
+                    });
 
                 EditorUtility.ClearProgressBar();
 

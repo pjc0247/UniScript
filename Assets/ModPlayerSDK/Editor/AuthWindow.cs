@@ -5,121 +5,128 @@ using UnityEditor;
 
 using Firebase.Auth;
 
-public class AuthWindow : EditorWindow
+namespace ModPlayerSDK
 {
-    private Texture2D logo;
+    using Internal;
 
-    [MenuItem("ModPlayer/Login")]
-    public static void ShowAuthWindow()
+    public class AuthWindow : EditorWindow
     {
-        var win = new AuthWindow();
-        win.minSize = win.maxSize = new Vector2(450, 240);
-        win.titleContent = new GUIContent(
-            "Login to ModPlayer",
-            AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ModPlayerSDK/Images/icon.png"));
-        win.Show();
-    }
-    [MenuItem("ModPlayer/Login", validate = true)]
-    private static bool LoginCond()
-    {
-        return ModPlayerFB.Auth.CurrentUser == null;
-    }
-    [MenuItem("ModPlayer/Logout")]
-    public static void Logout()
-    {
-        var auth = ModPlayerFB.Auth;
-        if (auth.CurrentUser != null)
-            auth.SignOut();
-    }
-    [MenuItem("ModPlayer/Logout", validate = true)]
-    private static bool LogoutCond()
-    {
-        return ModPlayerFB.Auth.CurrentUser != null;
-    }
+        private Texture2D logo;
 
-    public void OnGUI()
-    {
-        EnsureResources();
-
-        GUI.DrawTexture(new Rect(Vector2.zero, minSize), Texture2D.whiteTexture);
-        GUI.DrawTexture(new Rect(0, 0, 450, 100), logo);
-
-        EditorGUILayout.BeginVertical();
-        GUILayout.Space(130);
-
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.BeginVertical();
-        if (GUILayout.Button("Github", GUILayout.Width(200), GUILayout.Height(35)))
+        [MenuItem("ModPlayer/Login")]
+        public static void ShowAuthWindow()
         {
-            GithubAuthWindow.ShowOAuthView(LoginGithub);
+            var win = new AuthWindow();
+            win.minSize = win.maxSize = new Vector2(450, 240);
+            win.titleContent = new GUIContent(
+                "Login to ModPlayer",
+                AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ModPlayerSDK/Images/icon.png"));
+            win.Show();
         }
-        if (GUILayout.Button("Google", GUILayout.Width(200), GUILayout.Height(35)))
+        [MenuItem("ModPlayer/Login", validate = true)]
+        private static bool LoginCond()
         {
-            GoogleAuthWindow.ShowOAuthView(LoginGoogle);
+            return ModPlayerFB.Auth.CurrentUser == null;
         }
-        EditorGUILayout.EndVertical();
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
+        [MenuItem("ModPlayer/Logout")]
+        public static void Logout()
+        {
+            var auth = ModPlayerFB.Auth;
+            if (auth.CurrentUser != null)
+                auth.SignOut();
+        }
+        [MenuItem("ModPlayer/Logout", validate = true)]
+        private static bool LogoutCond()
+        {
+            return ModPlayerFB.Auth.CurrentUser != null;
+        }
 
-        EditorGUILayout.EndVertical();
-    }
-    private void EnsureResources()
-    {
-        if (logo == null)
-            logo = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ModPlayerSDK/Images/modplayer.png");
-    }
+        public void OnGUI()
+        {
+            EnsureResources();
 
-    private void LoginGoogle(string accessToken)
-    {
-        Debug.Log("[LoginGoogle] " + accessToken);
+            GUI.DrawTexture(new Rect(Vector2.zero, minSize), Texture2D.whiteTexture);
+            GUI.DrawTexture(new Rect(0, 0, 450, 100), logo);
 
-        var auth = ModPlayerFB.Auth;
-        var credential =
-            GoogleAuthProvider.GetCredential("", accessToken);
-        auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
-            if (task.IsCanceled)
+            EditorGUILayout.BeginVertical();
+            GUILayout.Space(130);
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.BeginVertical();
+            if (GUILayout.Button("Github", GUILayout.Width(200), GUILayout.Height(35)))
             {
-                Debug.LogError("SignInWithCredentialAsync was canceled.");
-                return;
+                GithubAuthWindow.ShowOAuthView(LoginGithub);
             }
-            if (task.IsFaulted)
+            if (GUILayout.Button("Google", GUILayout.Width(200), GUILayout.Height(35)))
             {
-                Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
-                return;
+                GoogleAuthWindow.ShowOAuthView(LoginGoogle);
             }
+            EditorGUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
 
-            var newUser = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+            EditorGUILayout.EndVertical();
+        }
+        private void EnsureResources()
+        {
+            if (logo == null)
+                logo = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ModPlayerSDK/Images/modplayer.png");
+        }
 
-            Close();
-        });
-    }
-    private void LoginGithub(string accessToken)
-    {
-        Debug.Log("[LoginGithub] " + accessToken);
+        private void LoginGoogle(string accessToken)
+        {
+            Debug.Log("[LoginGoogle] " + accessToken);
 
-        var auth = ModPlayerFB.Auth;
-        var credential =
-            GitHubAuthProvider.GetCredential(accessToken);
-        auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
-            if (task.IsCanceled)
+            var auth = ModPlayerFB.Auth;
+            var credential =
+                GoogleAuthProvider.GetCredential("", accessToken);
+            auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
             {
-                Debug.LogError("SignInWithCredentialAsync was canceled.");
-                return;
-            }
-            if (task.IsFaulted)
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("SignInWithCredentialAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                var newUser = task.Result;
+                Debug.LogFormat("User signed in successfully: {0} ({1})",
+                    newUser.DisplayName, newUser.UserId);
+
+                Close();
+            });
+        }
+        private void LoginGithub(string accessToken)
+        {
+            Debug.Log("[LoginGithub] " + accessToken);
+
+            var auth = ModPlayerFB.Auth;
+            var credential =
+                GitHubAuthProvider.GetCredential(accessToken);
+            auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
             {
-                Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
-                return;
-            }
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("SignInWithCredentialAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                    return;
+                }
 
-            var newUser = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+                var newUser = task.Result;
+                Debug.LogFormat("User signed in successfully: {0} ({1})",
+                    newUser.DisplayName, newUser.UserId);
 
-            Close();
-        });
+                Close();
+            });
+        }
     }
 }

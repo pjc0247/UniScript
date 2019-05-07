@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModApp
+namespace ModPlayerSDK.Model
 {
-    public string id;
-    public string owner;
+    public class ModApp
+    {
+        public string id;
+        public string owner;
+        public string name;
+        public string thumbnail_url;
 
-    public string title;
-    public string description;
+        public ModBuild[] builds;
 
-    public string scene_url;
-    public string script_url;
+        public Texture2D thumbnail;
+    }
 }

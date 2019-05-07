@@ -18,6 +18,7 @@ namespace UniScript.Serialization
         public Vector2 vec2;
         public Vector3 vec3;
         public Vector4 vec4;
+        public Color col;
         public Quaternion q;
 
         public UnityEngine.Object unityObject;
@@ -33,6 +34,7 @@ namespace UniScript.Serialization
         Float, Integer, Bool, Double,
 
         Vec2, Vec3, Vec4,
+        Color,
         Quaternion,
 
         UnityObject
@@ -52,6 +54,8 @@ namespace UniScript.Serialization
                 return new SValue(SValueType.Vec3) { vec3 = vec3 };
             if (_obj is Vector4 vec4)
                 return new SValue(SValueType.Vec4) { vec4 = vec4 };
+            if (_obj is Color col)
+                return new SValue(SValueType.Color) { col = col };
             if (_obj is Quaternion q)
                 return new SValue(SValueType.Quaternion) { q = q };
 
@@ -78,6 +82,8 @@ namespace UniScript.Serialization
                 return _obj.vec3;
             if (_obj.type == SValueType.Vec4)
                 return _obj.vec4;
+            if (_obj.type == SValueType.Color)
+                return _obj.col;
             if (_obj.type == SValueType.Quaternion)
                 return _obj.q;
 

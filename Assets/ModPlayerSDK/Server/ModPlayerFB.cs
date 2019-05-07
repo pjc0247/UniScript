@@ -7,55 +7,59 @@ using Firebase.Auth;
 using Firebase.Storage;
 using Firebase.Functions;
 
-public class ModPlayerFB
+namespace ModPlayerSDK.Internal
 {
-    private static FirebaseApp _App;
-    public static FirebaseApp App
+    public class ModPlayerFB
     {
-        get
+        private static FirebaseApp _App;
+        public static FirebaseApp App
         {
-            if (_App == null)
+            get
             {
-                _App = FirebaseApp.Create(new AppOptions() {
-                    ApiKey = "AIzaSyBTB9nagH2-TSZcVswSVHeUHlkXfo1LYAs",
-                    AppId = "modplayer-kr",
-                    ProjectId = "modplayer-kr"
-                });
+                if (_App == null)
+                {
+                    _App = FirebaseApp.Create(new AppOptions()
+                    {
+                        ApiKey = "AIzaSyBTB9nagH2-TSZcVswSVHeUHlkXfo1LYAs",
+                        AppId = "modplayer-kr",
+                        ProjectId = "modplayer-kr"
+                    });
+                }
+                return _App;
             }
-            return _App;
         }
-    }
 
-    private static FirebaseAuth _Auth;
-    public static FirebaseAuth Auth
-    {
-        get
+        private static FirebaseAuth _Auth;
+        public static FirebaseAuth Auth
         {
-            if (_Auth == null)
-                _Auth = FirebaseAuth.GetAuth(App);
-            return _Auth;
+            get
+            {
+                if (_Auth == null)
+                    _Auth = FirebaseAuth.GetAuth(App);
+                return _Auth;
+            }
         }
-    }
 
-    private static FirebaseStorage _Storage;
-    public static FirebaseStorage Storage
-    {
-        get
+        private static FirebaseStorage _Storage;
+        public static FirebaseStorage Storage
         {
-            if (_Storage == null)
-                _Storage = FirebaseStorage.GetInstance(App, "gs://modplayer-kr.appspot.com/");
-            return _Storage;
+            get
+            {
+                if (_Storage == null)
+                    _Storage = FirebaseStorage.GetInstance(App, "gs://modplayer-kr.appspot.com/");
+                return _Storage;
+            }
         }
-    }
 
-    private static FirebaseFunctions _Functions;
-    public static FirebaseFunctions Functions
-    {
-        get
+        private static FirebaseFunctions _Functions;
+        public static FirebaseFunctions Functions
         {
-            if (_Functions == null)
-                _Functions = FirebaseFunctions.GetInstance(App);
-            return _Functions;
+            get
+            {
+                if (_Functions == null)
+                    _Functions = FirebaseFunctions.GetInstance(App);
+                return _Functions;
+            }
         }
     }
 }
