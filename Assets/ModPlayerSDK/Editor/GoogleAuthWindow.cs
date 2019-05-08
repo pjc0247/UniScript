@@ -62,7 +62,7 @@ public class GoogleAuthWindow : EditorWindow
     void OnGUI()
     {
         if (webView.Hook(this))
-            webView.LoadURL("https://accounts.google.com/o/oauth2/v2/auth?client_id=439172685345-ocdo6g9672rtsbumvm75j5mafpkev4p0.apps.googleusercontent.com&scope=profile&redirect_uri=https://modplayer-kr.firebaseapp.com/__/auth/handler&response_type=code");
+            webView.LoadURL("https://accounts.google.com/o/oauth2/v2/auth?client_id=439172685345-ocdo6g9672rtsbumvm75j5mafpkev4p0.apps.googleusercontent.com&scope=profile&redirect_uri=https://modplayer-kr.firebaseapp.com/__/auth/handler&response_type=code&include_granted_scopes=true");
 
         webView.OnGUI(new Rect(Vector2.zero, position.size));
     }

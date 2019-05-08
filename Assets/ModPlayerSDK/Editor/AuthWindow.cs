@@ -13,7 +13,7 @@ namespace ModPlayerSDK
     {
         private Texture2D logo;
 
-        [MenuItem("ModPlayer/Login")]
+        [MenuItem("ModPlayer/Login", priority = -100)]
         public static void ShowAuthWindow()
         {
             var win = new AuthWindow();
@@ -28,7 +28,7 @@ namespace ModPlayerSDK
         {
             return ModPlayerFB.Auth.CurrentUser == null;
         }
-        [MenuItem("ModPlayer/Logout")]
+        [MenuItem("ModPlayer/Logout", priority = -99)]
         public static void Logout()
         {
             var auth = ModPlayerFB.Auth;
