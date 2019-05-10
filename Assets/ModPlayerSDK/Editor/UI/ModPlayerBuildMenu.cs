@@ -7,6 +7,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
+using UniScript;
+
 namespace ModPlayerSDK
 {
     using Internal;
@@ -93,6 +95,8 @@ namespace ModPlayerSDK
 
             AssetImporter.GetAtPath(scene.path)
                 .SetAssetBundleNameAndVariant($"{modName}_scene", "");
+
+            BundleResources.SetAssetBundleAllResources($"{modName}_script");
 
             MergeCsx.CreateMonolith(
                 "Assets/modplayer_script.json",

@@ -204,6 +204,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &495875037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8489148908355721094, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8489148908667036763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &495875038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495875037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48263224e2970f84b8ffd4069cdd2141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideFields:
+    keys:
+    - target
+    - speed
+    - script
+    - scriptPath
+    - overrideFields
+    values:
+    - type: 10
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 1
+      f: 1
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 10
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 0
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 0
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+  script: {fileID: 0}
+  scriptPath: Assets/UniScript/Temp/RotateF.csx
 --- !u!1 &621224630
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,16 +425,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288647923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86de2787062adc74a9c44585b2ccb4d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 48263224e2970f84b8ffd4069cdd2141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overrideFields:
-    keys: []
-    values: []
+    keys:
+    - target
+    - speed
+    - script
+    - scriptPath
+    - overrideFields
+    values:
+    - type: 10
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 273427854}
+    - type: 1
+      f: 22
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 10
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 0
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
+    - type: 0
+      f: 0
+      d: 0
+      i: 0
+      b: 0
+      vec2: {x: 0, y: 0}
+      vec3: {x: 0, y: 0, z: 0}
+      vec4: {x: 0, y: 0, z: 0, w: 0}
+      col: {r: 0, g: 0, b: 0, a: 0}
+      q: {x: 0, y: 0, z: 0, w: 0}
+      unityObject: {fileID: 0}
   script: {fileID: 0}
-  scriptPath: 
-  target: {fileID: 273427854}
-  speed: 22
+  scriptPath: Assets/UniScript/Temp/RotateF.csx
 --- !u!65 &1288647925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -710,3 +851,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8489148908667036763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8489148908355721094, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_Name
+      value: TestCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4081631
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5957313
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.716909
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489148908355721145, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7267371599872801204, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c78e9b0f1e8dfba4da0b470a55a9d0f6, type: 3}
