@@ -14,6 +14,9 @@ namespace ModPlayerSDK
             var win = new CreateAppWindow();
             win.title = "CreateApp";
             win.maxSize = win.minSize = new Vector2(300, 70);
+            var position = win.position;
+            position.center = new Rect(0f, 0f, Screen.currentResolution.width, Screen.currentResolution.height).center;
+            win.position = position;
             win.Show();
         }
 

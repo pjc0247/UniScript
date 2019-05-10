@@ -7,12 +7,16 @@ namespace ModPlayerSDK
 {
     using Model;
 
-    public class AppDashboardWindow : EditorWindow
+    public class AppDashboardWindow : ModPlayerWindow
     {
         [MenuItem("ModPlayer/AppDashboard")]
         public static void ShowDashboard()
         {
             var win = new AppDashboardWindow();
+            win.maxSize = win.minSize = new Vector2(350, 400);
+            var position = win.position;
+            position.center = new Rect(0f, 0f, Screen.currentResolution.width, Screen.currentResolution.height).center;
+            win.position = position;
             win.Show();
         }
 
@@ -32,12 +36,8 @@ namespace ModPlayerSDK
             };
         }
 
-        void OnGUI()
+        protected override void Draw()
         {
-            GUI.DrawTexture(new Rect(Vector2.zero, maxSize), Texture2D.whiteTexture);
-
-            EditorGUILayout.BeginVertical();
-
             if (GUILayout.Button("Add"))
                 CreateAppWindow.ShowWindow();
 
@@ -62,8 +62,6 @@ namespace ModPlayerSDK
                 }
             }
             EditorGUILayout.EndScrollView();
-
-            EditorGUILayout.EndVertical();
         }
 
         private async void CreateApp(string title)
