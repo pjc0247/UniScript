@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 using Newtonsoft.Json;
 
@@ -44,14 +45,19 @@ namespace ModPlayerSDK
 
         public async static Task<GetAppsResponse> GetApps()
         {
+#if UNITY_WEBGL
+            var www = UnityWebRequest.Get("https://us-central1-modplayer-kr.cloudfunctions.net/getAppsPublic");
+            www.SendWebRequest();
+            while (www.isDone == false) ;
+            return JsonConvert.DeserializeObject<GetAppsResponse>(www.downloadHandler.text);
+#else
             var func = ModPlayerFB.Functions;
             var resp = await func.GetHttpsCallable("getApps")
                 .CallAsync(new Dictionary<string, object>() {
                 });
 
-            Debug.Log(JsonConvert.SerializeObject(resp.Data));
-
             return Reinterpret<GetAppsResponse>(resp.Data);
+#endif
         }
         public async static Task<GetAppsResponse> GetApps(string owner)
         {
