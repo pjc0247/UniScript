@@ -13,5 +13,11 @@ namespace UniScript
     public class MigrationContext
     {
         public string scenePath;
+
+        public List<MigratedPrefabData> prefabs = new List<MigratedPrefabData>();
+    }
+    public class MigratedPrefabData
+    {
+        public string path;
     }
 }

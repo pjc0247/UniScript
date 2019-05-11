@@ -36,6 +36,8 @@ namespace UniScript
                 File.Delete(backupPath);
             File.Copy(scene.path, backupPath);
 
+            ctx.scenePath = scene.path;
+
             var tempPath = "Assets/UniScript/Temp/";
             if (Directory.Exists(tempPath))
                 Directory.Delete(tempPath, true);
@@ -50,6 +52,8 @@ namespace UniScript
             {
                 Debug.Log($"<b>[Migrate]</b> {path}");
 
+                BackupAsset(path);
+
                 var prefab = PrefabUtility.LoadPrefabContents(path);
                 var scriptData = new List<ScriptData>();
 
@@ -58,6 +62,10 @@ namespace UniScript
 
                 PrefabUtility.SaveAsPrefabAsset(prefab, path);
                 PrefabUtility.UnloadPrefabContents(prefab);
+                
+                ctx.prefabs.Add(new MigratedPrefabData() {
+                    path = path
+                });
             }
         }
         private static void CollectObjectsFromScene()
@@ -96,7 +104,6 @@ namespace UniScript
         }
         private static void Migrate(List<ScriptData> scriptData)
         {
-            Debug.Log($"Migrate {scriptData.Count}");
             foreach (var data in scriptData)
             {
                 var uniScript = data.mono
@@ -118,10 +125,36 @@ namespace UniScript
             }
         }
 
-        [MenuItem("UniScript/test scene")]
+        private static void BackupAsset(string path)
+        {
+            var backupPath = path + ".backup";
+            if (File.Exists(backupPath))
+                File.Delete(backupPath);
+            File.Copy(path, backupPath);
+        }
+        private static void RestoreAsset(string path)
+        {
+            try
+            {
+                var backupPath = path + ".backup";
+                if (File.Exists(path))
+                    File.Delete(path);
+                File.Copy(backupPath, path);
+
+                File.Delete(backupPath);
+
+                AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+
+        [MenuItem("UniScript/EndMig")]
         public static void MigrateObject()
         {
-            MigrateAll();
+            EndMigration();
         }
 
         [MenuItem("UniScript/Migrate scene")]
@@ -134,6 +167,9 @@ namespace UniScript
         /// </summary>
         public static void EndMigration()
         {
+            foreach (var prefab in ctx.prefabs)
+                RestoreAsset(prefab.path);
+
             var scenePath = ctx.scenePath;
             var backupPath = scenePath + ".backup.unity";
             if (File.Exists(scenePath))
