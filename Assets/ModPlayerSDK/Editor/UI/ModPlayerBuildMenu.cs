@@ -91,7 +91,7 @@ namespace ModPlayerSDK
             var scene = EditorSceneManager.GetActiveScene();
 
             EditorUtility.DisplayProgressBar("ModPlayerSDK", "Building...", 0);
-            UniMigration.MigrateScene();
+            UniMigration.MigrateAll();
 
             AssetImporter.GetAtPath(scene.path)
                 .SetAssetBundleNameAndVariant($"{modName}_scene", "");

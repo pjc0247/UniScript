@@ -42,6 +42,17 @@ namespace ModPlayerSDK
                 });
         }
 
+        public async static Task<GetAppsResponse> GetApps()
+        {
+            var func = ModPlayerFB.Functions;
+            var resp = await func.GetHttpsCallable("getApps")
+                .CallAsync(new Dictionary<string, object>() {
+                });
+
+            Debug.Log(JsonConvert.SerializeObject(resp.Data));
+
+            return Reinterpret<GetAppsResponse>(resp.Data);
+        }
         public async static Task<GetAppsResponse> GetApps(string owner)
         {
             var func = ModPlayerFB.Functions;

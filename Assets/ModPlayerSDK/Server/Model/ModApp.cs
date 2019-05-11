@@ -10,7 +10,7 @@ namespace ModPlayerSDK.Model
         public string owner;
         public string name;
         public string thumbnail_url;
-        public ModBuild[] builds;
+        public ModBuild[] build;
 
         // Runtime properties
         public Texture2D thumbnail;
@@ -18,9 +18,18 @@ namespace ModPlayerSDK.Model
         {
             get
             {
-                if (builds == null || builds.Length == 0)
+                if (build == null || build.Length == 0)
                     return null;
-                return builds[builds.Length - 1];
+                return build[build.Length - 1];
+            }
+        }
+        public bool has_build
+        {
+            get
+            {
+                if (build == null || build.Length == 0)
+                    return false;
+                return true;
             }
         }
     }

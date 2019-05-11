@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+using UniScript;
+
 public class CreateAssetBundle
 {
     [MenuItem("Build/BuildAssetBundle")]
     public static void BuildAssetBundle()
     {
-        UniAssetBundle.BuildUniScriptScene("testbundle", "testbundle_script");
+        UniAssetBundle.BuildUniScriptScene("testbundle_scene", "testbundle_script");
     }
 }

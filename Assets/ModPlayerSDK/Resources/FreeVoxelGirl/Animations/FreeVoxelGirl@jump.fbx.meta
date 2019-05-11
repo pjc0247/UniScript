@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: c4dd101abb5e94c46908eaea32e5b013
-timeCreated: 1498458770
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Armature
     100002: //RootNode
@@ -57,26 +55,33 @@ ModelImporter:
     7400000: FreeVoxelGirl-jump
     9500000: //RootNode
     13700000: Mesh
+  externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: FreeVoxelGirl-jump
@@ -160,25 +165,38 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human:
     - boneName: Hips
       humanName: Hips
@@ -302,129 +320,129 @@ ModelImporter:
         modified: 0
     skeleton:
     - name: FreeVoxelGirl@jump(Clone)
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Armature
+      parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0.000000081460335, y: 6.123234e-17, z: 6.1232336e-17, w: 1}
       scale: {x: 100, y: 100, z: 100}
-      transformModified: 1
     - name: VoxelKaduki
+      parentName: 
       position: {x: -0, y: 0.0001, z: 0}
       rotation: {x: 7.1054274e-15, y: -0.00000004371139, z: 7.121488e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Hips
+      parentName: 
       position: {x: 5.2605378e-20, y: 0.0032120002, z: -5.0831277e-11}
       rotation: {x: 0.0000000014551915, y: -0, z: 3.105881e-22, w: 1}
       scale: {x: 1, y: 0.9999999, z: 0.9999999}
-      transformModified: 1
     - name: Spine
+      parentName: 
       position: {x: -0, y: 0.00089999964, z: 2.3283064e-12}
       rotation: {x: -0.000000013096731, y: 3.5527137e-15, z: -5.169904e-24, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
     - name: Head
+      parentName: 
       position: {x: -0, y: 0.0018000002, z: -3.7252902e-11}
       rotation: {x: 7.1054274e-15, y: -3.5527137e-15, z: -4.1359005e-23, w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
     - name: Head_end
+      parentName: 
       position: {x: -0, y: 0.0008999997, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: LeftUpperArm
+      parentName: 
       position: {x: -0.0008999999, y: 0.0006000001, z: 0}
       rotation: {x: 0.000000013891178, y: -0.000000019036067, z: 0.7071068, w: 0.7071068}
       scale: {x: 1.000001, y: 1.0000007, z: 1.0000001}
-      transformModified: 1
     - name: LeftLowerArm
+      parentName: 
       position: {x: 1.3038516e-10, y: 0.00090000016, z: -9.3132255e-12}
       rotation: {x: -0.000000002546585, y: 0.000000011641534, z: 1.7509782e-16, w: 1}
       scale: {x: 1.0000001, y: 1, z: 0.9999999}
-      transformModified: 1
     - name: LeftHand
+      parentName: 
       position: {x: 3.1664968e-10, y: 0.0014999998, z: -9.3132255e-12}
       rotation: {x: -3.6379605e-10, y: 0.000000011641543, z: -8.536515e-17, w: 1}
       scale: {x: 1.0000004, y: 1.0000005, z: 1.0000001}
-      transformModified: 1
     - name: LeftHand_end
+      parentName: 
       position: {x: -0, y: 0.0007499999, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: RightUpperArm
+      parentName: 
       position: {x: 0.0008999999, y: 0.0006000001, z: 0}
       rotation: {x: 0.0000000056593814, y: 0.0000000108042455, z: -0.7071068, w: 0.7071068}
       scale: {x: 1.0000008, y: 1.0000007, z: 1.0000001}
-      transformModified: 1
     - name: RightLowerArm
+      parentName: 
       position: {x: -1.3504177e-10, y: 0.00090000016, z: -6.519258e-11}
       rotation: {x: -0.000000004638427, y: 0.000000023283064, z: -1.7288117e-16, w: 1}
       scale: {x: 0.9999995, y: 0.9999999, z: 0.9999997}
-      transformModified: 1
     - name: RightHand
+      parentName: 
       position: {x: 1.0710209e-10, y: 0.0014999999, z: -9.3132255e-12}
       rotation: {x: 0.000000006275518, y: -0.00000004656613, z: 1.415807e-16, w: 1}
       scale: {x: 1.0000006, y: 1.0000012, z: 1}
-      transformModified: 1
     - name: RightHand_end
+      parentName: 
       position: {x: -0, y: 0.0007499999, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: LeftUpperLeg
+      parentName: 
       position: {x: -0.00059999997, y: -0.00060000044, z: 3.4924596e-12}
       rotation: {x: 8.4703725e-18, y: 0.0000000014551913, z: 1, w: -0.0000000058207674}
       scale: {x: 1.0000002, y: 1.0000001, z: 0.9999998}
-      transformModified: 1
     - name: LeftLowerLeg
+      parentName: 
       position: {x: 4.6566128e-12, y: 0.0015, z: -1.16415315e-11}
       rotation: {x: -0.000000023283057, y: -3.4171884e-15, z: -0.000000011641534,
         w: 1}
       scale: {x: 0.9999999, y: 1, z: 1.0000002}
-      transformModified: 1
     - name: LeftFoot
+      parentName: 
       position: {x: -4.6566126e-11, y: 0.00089999987, z: 6.984919e-11}
       rotation: {x: 0.00000004656613, y: 0.000000008731153, z: 0.000000008731149,
         w: 1}
       scale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
-      transformModified: 1
     - name: LeftFoot_end
+      parentName: 
       position: {x: -0, y: 0.00045000002, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: RightUpperLeg
+      parentName: 
       position: {x: 0.00059999997, y: -0.00060000044, z: 3.4924596e-12}
       rotation: {x: -4.2351854e-18, y: 0.000000013096724, z: 1, w: 0.000000002910383}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
-      transformModified: 1
     - name: RightLowerLeg
+      parentName: 
       position: {x: -2.3283064e-12, y: 0.0015, z: -1.16415315e-11}
       rotation: {x: -0.000000034924597, y: 0.000000005820766, z: 0.000000008731151,
         w: 1}
       scale: {x: 1.0000001, y: 1.0000005, z: 1.0000004}
-      transformModified: 1
     - name: RightFoot
+      parentName: 
       position: {x: -8.8475643e-11, y: 0.00089999987, z: -8.1490726e-12}
       rotation: {x: 0.000000023283064, y: -0.0000000058207625, z: -0.000000002910384,
         w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 0.99999994}
-      transformModified: 1
     - name: RightFoot_end
+      parentName: 
       position: {x: -0, y: 0.00045000002, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Mesh
+      parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0.000000081460335, y: -0.00000004371139, z: 3.621977e-15, w: 1}
       scale: {x: 100, y: 100, z: 100}
-      transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -434,10 +452,12 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: testaa_script
   assetBundleVariant: 

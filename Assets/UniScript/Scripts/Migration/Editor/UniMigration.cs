@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,8 +28,8 @@ namespace UniScript
 
             var paths = new List<ScriptData>();
 
-            CollectObjectsFromScene();
-            CollectObjectsFromResources();
+            MigrateObjectsFromScene(paths);
+            MigrateObjectsFromResources(paths);
 
             var scene = EditorSceneManager.GetActiveScene();
             var backupPath = scene.path + ".backup.unity";
@@ -44,7 +45,7 @@ namespace UniScript
             Directory.CreateDirectory(tempPath);
             Scriptify(paths);
         }
-        private static void CollectObjectsFromResources()
+        private static void MigrateObjectsFromResources(List<ScriptData> globalScriptData)
         {
             foreach (var path in AssetDatabase.GetAllAssetPaths()
                 .Where(x => x.Contains("Resources/"))
@@ -66,9 +67,11 @@ namespace UniScript
                 ctx.prefabs.Add(new MigratedPrefabData() {
                     path = path
                 });
+
+                globalScriptData.AddRange(scriptData);
             }
         }
-        private static void CollectObjectsFromScene()
+        private static void MigrateObjectsFromScene(List<ScriptData> globalScriptData)
         {
             var scripts = GameObject.FindObjectsOfType<MonoBehaviour>();
             var scriptData = new List<ScriptData>();
@@ -77,6 +80,8 @@ namespace UniScript
                 AddScriptDataFromMonoBehaviour(script, scriptData);
 
             Migrate(scriptData);
+
+            globalScriptData.AddRange(scriptData);
         }
         private static void AddScriptDataFromGameObject(GameObject gobj, List<ScriptData> scriptData)
         {
@@ -125,6 +130,27 @@ namespace UniScript
             }
         }
 
+        public static ResourceMap GenerateResourceMap()
+        {
+            if (ctx == null)
+                throw new InvalidOperationException("Only valid during migration process");
+
+            var map = new ResourceMap();
+            map.resources = new Dictionary<string, ResourceMapItem>();
+            foreach (var prefab in ctx.prefabs)
+            {
+                map.resources[prefab.path] = new ResourceMapItem() {
+                    path = prefab
+                        .path.Split(new string[] { "Resources/" }, StringSplitOptions.None)[1]
+                        .Split('.')[0],
+                    name = prefab.path
+                        .Split('.').First()
+                        .Split('/').Last()
+                };
+            }
+            return map;
+        }
+
         private static void BackupAsset(string path)
         {
             var backupPath = path + ".backup";
@@ -151,17 +177,6 @@ namespace UniScript
             }
         }
 
-        [MenuItem("UniScript/EndMig")]
-        public static void MigrateObject()
-        {
-            EndMigration();
-        }
-
-        [MenuItem("UniScript/Migrate scene")]
-        public static void MigrateScene()
-        {
-            MigrateAll();
-        }
         /// <summary>
         /// Ends migration and revert all changes.
         /// </summary>

@@ -13,6 +13,9 @@ namespace ModPlayerSDK
             {
                 if (path.Contains("Resources/") == false)
                     continue;
+                // Scene must not be bundled together
+                if (path.EndsWith(".unity"))
+                    continue;
 
                 AssetImporter.GetAtPath(path)
                     .SetAssetBundleNameAndVariant(bundleName, "");

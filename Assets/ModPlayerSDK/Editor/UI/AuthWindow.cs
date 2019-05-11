@@ -12,6 +12,7 @@ namespace ModPlayerSDK
     public class AuthWindow : EditorWindow
     {
         private Texture2D logo;
+        private bool shouldClose = false;
 
         [MenuItem("ModPlayer/Login", priority = -100)]
         public static void ShowAuthWindow()
@@ -43,6 +44,9 @@ namespace ModPlayerSDK
 
         public void OnGUI()
         {
+            if (shouldClose)
+                Close();
+
             EnsureResources();
 
             GUI.DrawTexture(new Rect(Vector2.zero, minSize), Texture2D.whiteTexture);
@@ -98,7 +102,7 @@ namespace ModPlayerSDK
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
 
-                Close();
+                shouldClose = true;
             });
         }
         private void LoginGithub(string accessToken)
@@ -125,7 +129,7 @@ namespace ModPlayerSDK
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
 
-                Close();
+                shouldClose = true;
             });
         }
     }
