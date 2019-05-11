@@ -130,6 +130,10 @@ namespace ModPlayerSDK
                 await App.AddBuild(targetApp,
                     new ModBuild()
                     {
+                        title = modName,
+                        description = description,
+                        version = version,
+
                         scene_url = sceneUrl,
                         script_url = scriptUrl
                     });

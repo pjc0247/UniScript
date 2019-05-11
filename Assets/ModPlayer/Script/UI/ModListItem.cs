@@ -12,7 +12,7 @@ public class ModListItem : MonoBehaviour,
     IPointerClickHandler
 {
     public RawImage thumbnail;
-    public Text title;
+    public Text title, lastBuildDate;
     public GameObject noBuilds;
 
     private ModApp app;
@@ -23,7 +23,12 @@ public class ModListItem : MonoBehaviour,
         title.text = app.name;
 
         if (app.has_build == false)
+        {
+            lastBuildDate.gameObject.SetActive(false);
             noBuilds.SetActive(true);
+        }
+        else
+            lastBuildDate.text = app.last_build.GetCreatedAt().ToLongDateString();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
