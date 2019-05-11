@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mask_Head
+  m_Mask: 00000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Base_mesh
+    m_Weight: 1
+  - m_Path: BombDisposal_mesh
+    m_Weight: 1
+  - m_Path: Female_mesh
+    m_Weight: 1
+  - m_Path: FemaleMedic_mesh
+    m_Weight: 1
+  - m_Path: GasMask_mesh
+    m_Weight: 1
+  - m_Path: JungleCommando_mesh
+    m_Weight: 1
+  - m_Path: Medic_mesh
+    m_Weight: 1
+  - m_Path: Mercenary_mesh
+    m_Weight: 1
+  - m_Path: Officer_mesh
+    m_Weight: 1
+  - m_Path: Pilot_mesh
+    m_Weight: 1
+  - m_Path: Root_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt/Hat_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt/Hand_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt/Hand_Right_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt/Foot_Left_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt
+    m_Weight: 1
+  - m_Path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt/Foot_Right_jnt
+    m_Weight: 1
+  - m_Path: Soldier_01_mesh
+    m_Weight: 1
+  - m_Path: Soldier_02_mesh
+    m_Weight: 1
+  - m_Path: Soldier_03_mesh
+    m_Weight: 1
+  - m_Path: SpecialForces_01_mesh
+    m_Weight: 1
+  - m_Path: SpecialForces_02_mesh
+    m_Weight: 1
+  - m_Path: SpecialForces_03_mesh
+    m_Weight: 1
+  - m_Path: SpecialForces_04_mesh
+    m_Weight: 1
+  - m_Path: Terrorist_01_mesh
+    m_Weight: 1
+  - m_Path: Terrorist_02_mesh
+    m_Weight: 1
+  - m_Path: Terrorist_03_mesh
+    m_Weight: 1
+  - m_Path: Terrorist_04_mesh
+    m_Weight: 1

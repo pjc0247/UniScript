@@ -8,6 +8,8 @@ using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using ExitGames.Client.Photon;
 
+using ModPlayerSDK;
+
 public class PPlayer : MonoBehaviourPunCallbacks
 {
     public static PPlayer LocalPlayer;
@@ -36,7 +38,7 @@ public class PPlayer : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        thirdPersonCam.SetActive(Room.is3rdPersonCam);
+        thirdPersonCam.SetActive(SceneSetup.instance.cameraType == ModPlayerSDK.CameraType.ThirdPerson);
         cinemaLight.SetActive(Room.CustomProperties.SafeGet("type", "") == RoomType.Cinema);
 
         if (photonView.IsMine)
@@ -122,7 +124,7 @@ public class PPlayer : MonoBehaviourPunCallbacks
             photonView.RPC(nameof(NotifyAction), RpcTarget.All, 2);
         }
 
-        if (Room.is3rdPersonCam)
+        if (SceneSetup.instance.cameraType == ModPlayerSDK.CameraType.ThirdPerson)
             Process3rdPersonCameraMovement();
         else
             ProcessStaticCameraMovement();
@@ -187,12 +189,14 @@ public class PPlayer : MonoBehaviourPunCallbacks
         var dir = 
             transform.forward * input.Direction.Y +
             transform.right * input.Direction.X;
-        var move = dir * 300 * Time.deltaTime;
+        var move = dir * 100 * Time.deltaTime;
         controller.SimpleMove(move);
 
         CancelGestureIfPlaying();
         anim.SetFloat("Speed_f", move.magnitude);
     }
+
+    private Vector3 prevPosition;
     private void Process3rdPersonCameraRotation()
     {
         var input = InputManager.ActiveDevice;
@@ -205,12 +209,25 @@ public class PPlayer : MonoBehaviourPunCallbacks
         */
         //thirdPersonCamContainer.localEulerAngles =
         //    new Vector3(Mathf.Clamp(thirdPersonCamContainer.localEulerAngles.x, -25, 30), 0, 0);
+        /*
         var angles = thirdPersonCamContainer.localEulerAngles;
         if (angles.x >= 180 && angles.x < 360 + thirdPersonAngleXMin)
             angles.x = 360 + thirdPersonAngleXMin;
         if (angles.x < 180 && angles.x >= thirdPersonAngleXMax)
             angles.x = thirdPersonAngleXMax;
         thirdPersonCamContainer.localEulerAngles = angles;
+        */
+
+        var delta = prevPosition - Input.mousePosition;
+        prevPosition = Input.mousePosition;
+
+        if (Input.GetMouseButtonDown(1))
+            delta = Vector3.zero;
+        if (Input.GetMouseButton(1))
+        {
+            transform.localEulerAngles += new Vector3(
+                0, -delta.x * 0.45f, 0);
+        }
     }
 
     public Ray GetForwardRay()
