@@ -11,10 +11,10 @@ namespace UniScript
     {
         public static UniAssetBundle instance;
 
-        public static void LoadUniScriptScene(string sceneUrl, string assetUrl)
+        public static void LoadUniScriptScene(string sceneUrl, string assetUrl, bool additive = false)
         {
             EnsureInstance();
-            instance.StartCoroutine(instance._LoadUniScriptScene(sceneUrl, assetUrl));
+            instance.StartCoroutine(instance._LoadUniScriptScene(sceneUrl, assetUrl, additive));
         }
         private static void EnsureInstance()
         {
