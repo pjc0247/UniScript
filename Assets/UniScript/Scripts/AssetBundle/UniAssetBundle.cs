@@ -28,7 +28,7 @@ namespace UniScript
         {
             instance = this;
         }
-        private IEnumerator _LoadUniScriptScene(string sceneUrl, string assetUrl)
+        private IEnumerator _LoadUniScriptScene(string sceneUrl, string assetUrl, bool additive = false)
         {
             var sceneRequest = UnityWebRequestAssetBundle.GetAssetBundle(sceneUrl);
             var assetRequest = UnityWebRequestAssetBundle.GetAssetBundle(assetUrl);
@@ -57,7 +57,8 @@ namespace UniScript
             ModResource.LoadResourceMap(resourcesMap, assetBundle);
 
             Debug.Log("[LoadScene] " + sceneBundle.GetAllScenePaths()[0]);
-            SceneManager.LoadScene(sceneBundle.GetAllScenePaths()[0]);
+            SceneManager.LoadScene(sceneBundle.GetAllScenePaths()[0],
+                additive ? LoadSceneMode.Additive : LoadSceneMode.Single);
         }
     }
 }

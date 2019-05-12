@@ -211,6 +211,8 @@ namespace UniScript
 
                 AssetDatabase.ImportAsset(path.csxPath);
             }
+
+            Debug.Log($"[Scriptify] {srcPath.Count} scripts.");
         }
     }
 }
