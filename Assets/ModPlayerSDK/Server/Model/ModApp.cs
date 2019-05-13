@@ -10,6 +10,7 @@ namespace ModPlayerSDK.Model
         public string owner;
         public string name;
         public string thumbnail_url;
+        public string preview_urls;
         public ModBuild[] build;
 
         // Runtime properties
@@ -31,6 +32,11 @@ namespace ModPlayerSDK.Model
                     return false;
                 return true;
             }
+        }
+
+        public string[] GetPreviewUrls()
+        {
+            return preview_urls.Split(',');
         }
     }
 }

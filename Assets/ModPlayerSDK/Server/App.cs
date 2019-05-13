@@ -42,6 +42,21 @@ namespace ModPlayerSDK
                     ["thumbnail_url"] = url
                 });
         }
+        public async static Task SetPreviews(ModApp app, string[] urls)
+        {
+            if (app == null)
+                throw new ArgumentException(nameof(app));
+            if (urls == null)
+                throw new ArgumentException(nameof(urls));
+
+            var func = ModPlayerFB.Functions;
+            var resp = await func.GetHttpsCallable("setThumbnail")
+                .CallAsync(new Dictionary<string, object>()
+                {
+                    ["app_id"] = app.id,
+                    ["preview_urls"] = string.Join(",", urls)
+                });
+        }
 
         public async static Task<GetAppsResponse> GetApps()
         {
@@ -133,7 +148,7 @@ namespace ModPlayerSDK
     {
         public class CreateAppResponse
         {
-            public ModApp app;
+            public string app_id;
         }
         public class GetAppsResponse
         {
