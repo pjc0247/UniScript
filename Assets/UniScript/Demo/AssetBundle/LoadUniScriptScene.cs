@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UniScript;
+
 public class LoadUniScriptScene : MonoBehaviour
 {
     void Start()
@@ -12,7 +14,7 @@ public class LoadUniScriptScene : MonoBehaviour
         // Click `Build/BuildAssetBundle` menu on Unity Editor.
         // (or please take a look `Editor/CreateAssetBundle.cs`)
         UniAssetBundle.LoadUniScriptScene(
-            "file:///Packs/testbundle",
-            "file:///Packs/testbundle_script");
+            "file:///Packs/testaa_scene",
+            "file:///Packs/testaa_script");
     }
 }

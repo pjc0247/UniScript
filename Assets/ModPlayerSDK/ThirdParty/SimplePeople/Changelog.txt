@@ -1,0 +1,17 @@
+Simple People - Changelog
+
+Version 1.3
+- Changed the rig from the ground up to work with mo cap data and ragdoll
+
+Version 1.22
+- Added more animations - Wave, Check watch, Wipe mouth, Standing Jump, Running jump, Falling, Sexy dance, Leaning against wall, Smoking, Sitting on ground, Crossing arm, Hands on hips and Death
+- Reduced draw calls (2 each)
+- Added root motion to animations
+- Set texture filtering to point
+- Added a changelog txt file (you're reading it!)
+
+Version 1.21
+- Fixed Run animation foot flipping
+
+
+Thank you for purchasing Simple People, check out our other packs
