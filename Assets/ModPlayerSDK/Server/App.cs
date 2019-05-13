@@ -78,6 +78,9 @@ namespace ModPlayerSDK
 
         public async static Task<GetAppsResponse> CreatePlayHistory(ModApp app)
         {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
             var func = ModPlayerFB.Functions;
             var resp = await func.GetHttpsCallable("createPlayHistory")
                 .CallAsync(new Dictionary<string, object>()
@@ -89,6 +92,9 @@ namespace ModPlayerSDK
         }
         public async static Task<GetAppsResponse> Like(ModApp app)
         {
+            if (app == null)
+                throw new ArgumentNullException(nameof(app));
+
             var func = ModPlayerFB.Functions;
             var resp = await func.GetHttpsCallable("like")
                 .CallAsync(new Dictionary<string, object>()
