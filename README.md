@@ -25,7 +25,7 @@ move.MoveForward();
 
 Yet Another C# Scripting Engine
 ---
-Other C# scripts use `mcs` or `roslyn`. They're all compiler based not a interpreter<br>
+Other C# scripts use `mcs` or `roslyn`. They're all compiler based not an interpreter<br>
 however UniScript uses a __SlowSharp__ as a backend<br>
 which enables....
 * __Sandboxing__ : Can prevent malicious call with Whitelist, Blacklist or your own rules.
