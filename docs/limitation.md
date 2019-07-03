@@ -5,7 +5,7 @@ Since __UniScript__ uses [SlowSharp](https://github.com/pjc0247/SlowSharp) as a 
 
 await
 ----
-__UniScript__ is designed for creating game flows not a core logic computation, Threading is not a major consideration.<br>
+__UniScript__ is designed for creating game flows not a core logic computation, Threading is not a major consideration at this moment.<br>
 Current implementation of `await` keyword just __Waits__ until task ends and may blocks the execution thread.<br>
 <br>
 Here's a code from __SlowSharp__.
@@ -40,7 +40,7 @@ generic
 ----
 __generics__ are one of hardest part to implement. <br>
 
-Instantiating generic classes from script is fine, declaring generic classes or method is not supported yet.
+Instantiating generic classes from script is working, declaring generic classes or method is not supported yet.
 ```cs
 // This is OK
 var list = new List<int>();
@@ -73,8 +73,10 @@ Will be implemented in near future.
 
 Lambda
 ----
-Will be implemented with high priority.
-
+~~Will be implemented with high priority.~~ <br>
+Now supports with partially implementation.<br>
+https://github.com/pjc0247/SlowSharp/issues/1
+ 
 
 And more...
 ----
