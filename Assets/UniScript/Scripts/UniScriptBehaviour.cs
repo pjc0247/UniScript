@@ -11,6 +11,7 @@ public class UniScriptBehaviour : MonoBehaviour
 {
     public bool isBound => runner != null;
     public string src { get; private set; }
+    public string boundClassName { get; private set; }
 
     [HideInInspector]
     public SerializableDictionarySO overrideFields;
@@ -95,8 +96,8 @@ public class UniScriptBehaviour : MonoBehaviour
 
         runner = CScript.CreateRunner(src, scriptConfig);
         RuntimeScript.runner = runner;
-        instance = runner.Override(
-            GetBindableClass(), this);
+        boundClassName = GetBindableClass();
+        instance = runner.Override(boundClassName, this);
 
         BuildFlags();
 
