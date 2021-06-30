@@ -48,7 +48,7 @@ One only difference is all callbacks should be declared as public.
 
 True Hot Reloading
 ----
-Can replace methods after parsing. This also affects already instantiated objects. 
+Allows you to replace methods after parsing. This also affects already instantiated objects. 
 ```cs
 var r = CScript.CreateRunner(@"
 class Foo { public int GiveMeNumber() => 10; }
