@@ -3,7 +3,7 @@ Script Debugging API
 
 ### UniScript.DumpLocals()
 
-Prints all local variables from current scope.
+Prints all local variables in current scope.
 ```cs
 UniScript.DumpLocals();
 ```
@@ -13,7 +13,7 @@ UniScript.DumpLocals();
 
 ### UniScript.Break()
 
-Shows debug window. Works only Editor env.
+Shows debug window. Works only Editor environment.
 ```cs
 UniScript.Break();
 ```
