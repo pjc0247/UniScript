@@ -1,0 +1,16 @@
+{
+  "name": "com.iridescent.uniscript",
+  "version": "0.0.1",
+  "displayName": "uniscript",
+  "description": "[Forked]Brings C# scripting into Unity which acts as native code.",
+  "unity": "2022.1",
+  "keywords": [
+    "Tool",
+    "Script"
+  ],
+  "author": {
+    "name": "Murasaqi",
+    "email": "murasaqi@iridescent.jp",
+    "url": ""
+  }
+}
