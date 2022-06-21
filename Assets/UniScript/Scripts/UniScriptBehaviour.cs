@@ -10,7 +10,7 @@ using UniScript.Serialization;
 public class UniScriptBehaviour : MonoBehaviour
 {
     public bool isBound => runner != null;
-    public string src { get; private set; }
+    public string src;
     public string boundClassName { get; private set; }
 
     [HideInInspector]
@@ -84,6 +84,13 @@ public class UniScriptBehaviour : MonoBehaviour
     }
     */
 
+
+    [ContextMenu("Apply")]
+
+    public void Apply()
+    {
+        Bind(src);
+    }
     public void Bind(string src)
     {
         this.src = src;

@@ -29,7 +29,7 @@ public class DebugBreakpointWindow : EditorWindow
 
     private string src = "";
     private int line = 0;
-    private DebugWebviewHook webView;
+    // private DebugWebviewHook webView;
 
     private string eval = "";
     private string evalResult = "";
@@ -38,26 +38,26 @@ public class DebugBreakpointWindow : EditorWindow
 
     void OnEnable()
     {
-        if (!webView)
-        {
-            // create webView
-            webView = CreateInstance<DebugWebviewHook>();
-        }
+        // if (!webView)
+        // {
+        //     // create webView
+        //     webView = CreateInstance<DebugWebviewHook>();
+        // }
     }
 
     public void OnBecameInvisible()
     {
-        if (webView)
-        {
-            // signal the browser to unhook
-            webView.Detach();
-        }
+        // if (webView)
+        // {
+        //     // signal the browser to unhook
+        //     webView.Detach();
+        // }
     }
 
     void OnDestroy()
     {
         //Destroy web view
-        DestroyImmediate(webView);
+        // DestroyImmediate(webView);
     }
 
     void OnGUI()
@@ -68,13 +68,13 @@ public class DebugBreakpointWindow : EditorWindow
             return;
         }
 
-        if (webView.Hook(this))
-        {
-            webView.LoadURL("file:///" + Application.dataPath + "/UniScript/Scripts/Editor/Debugger/www/index.html");
-            timer = 0.525f;
-        }
-
-        webView.OnGUI(new Rect(Vector2.zero, new Vector2(490, 200)));
+        // if (webView.Hook(this))
+        // {
+        //     webView.LoadURL("file:///" + Application.dataPath + "/UniScript/Scripts/Editor/Debugger/www/index.html");
+        //     timer = 0.525f;
+        // }
+        //
+        // webView.OnGUI(new Rect(Vector2.zero, new Vector2(490, 200)));
 
         var e = Event.current;
 
@@ -121,26 +121,26 @@ public class DebugBreakpointWindow : EditorWindow
     private float timer = 0;
     void Update()
     {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                webView.ExecuteJavascript(@"
-setSrc(""" + src + @"""); ");
-                webView.ExecuteJavascript(@"
-markLine(" + line + @"); ");
-            }
-        }
+//         if (timer > 0)
+//         {
+//             timer -= Time.deltaTime;
+//             if (timer <= 0)
+//             {
+//                 webView.ExecuteJavascript(@"
+// setSrc(""" + src + @"""); ");
+//                 webView.ExecuteJavascript(@"
+// markLine(" + line + @"); ");
+//             }
+//         }
     }
 }
 
-public class DebugWebviewHook : WebViewHook
-{
-    protected override void OnLocationChanged(string url)
-    {
-    }
-    protected override void OnInitScripting()
-    {
-    }
-}
+// public class DebugWebviewHook : WebViewHook
+// {
+//     protected override void OnLocationChanged(string url)
+//     {
+//     }
+//     protected override void OnInitScripting()
+//     {
+//     }
+// }
